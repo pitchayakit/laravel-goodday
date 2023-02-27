@@ -1,0 +1,27 @@
+{
+    "name": "lexicon/goodday",
+    "description": "A simple Goodday package.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lexicon\\Goodday\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Lexicon\\Goodday\\MainServiceProvider"
+          ]
+        }
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Pitchayakit",
+            "email": "pitchayakit.p@gmaill.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5@dev"
+    }
+}
