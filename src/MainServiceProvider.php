@@ -5,6 +5,7 @@ namespace Lexicon\Goodday;
 use Illuminate\Support\ServiceProvider;
 use Lexicon\Goodday\Commands\SyncProjects;
 use Lexicon\Goodday\Commands\SyncUsers;
+use Lexicon\Goodday\Commands\Testing;
 
 class MainServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,6 @@ class MainServiceProvider extends ServiceProvider
 
         if($this->app->runningInConsole()) {
             $this->commands([
-                SyncProjects::class,
                 SyncUsers::class
             ]);
         }
