@@ -27,8 +27,11 @@ class Goodday
         ];
 
         $body_dafault = [];
-        if(Auth::user())
-            $body_dafault ['createdByUserId'] = Auth::user()->goodday_id;
+        if($user = Auth::user()) {
+            $body_dafault ['createdByUserId'] = $user->goodday_id;
+            $body_dafault ['fromUserId'] = $user->goodday_id;
+        }
+            
         $body = array_merge($body_dafault, $body);
 
         $request = new Request($action, "https://api.goodday.work/2.0/$url", $headers, json_encode($body));
