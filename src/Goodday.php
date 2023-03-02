@@ -13,7 +13,7 @@ class Goodday
     {
         $goodday_token = config('goodday.api_token');
         $client = new Client();
-        $request = new Request('GET', "$url?gd-api-token=$goodday_token");
+        $request = new Request('GET', "https://api.goodday.work/2.0/$url?gd-api-token=$goodday_token");
         $res = $client->sendAsync($request)->wait();
 
         return json_decode($res->getBody());

@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
+use Lexicon\Goodday\Goodday;
 
 class SyncUsers extends Command
 {
@@ -34,13 +35,7 @@ class SyncUsers extends Command
      */
     public function handle()
     {
-        $goodday_token = config('goodday.api_token');
-
-        $client = new Client();
-        $request = new Request('GET', "https://api.goodday.work/2.0/users?gd-api-token=$goodday_token");
-        $res = $client->sendAsync($request)->wait();
-        
-        $users = json_decode($res->getBody());
+        $users = Goodday::get('users');
 
         foreach($users as $goodday_user) {
             $user = User::where('email', $goodday_user->primaryEmail)->first();
